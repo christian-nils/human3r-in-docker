@@ -1,0 +1,14 @@
+services:
+  human3r:
+    build: .
+    command: tail -f
+    runtime: nvidia
+    volumes:
+      - ./Human3R:/workspace
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
